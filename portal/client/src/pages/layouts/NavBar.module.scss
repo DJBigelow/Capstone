@@ -1,0 +1,53 @@
+@import "../../assets/custom.scss";
+
+.link {
+  @extend .nav-link;
+  @extend .m-3;
+  @extend .p-1;
+  color: white !important;
+    transition: 500ms;
+
+  &:after {
+    $line-transition-time: .5s;
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: transparent;
+    transition: width $line-transition-time ease, background-color $line-transition-time ease;
+
+  }
+  &:hover:after {
+    width: 100%;
+    background: white;
+  }
+}
+.logout {
+  @extend .btn;
+  @extend .nav-link;
+  background-color: #f47920 !important;
+  color: rgb(255, 255, 255) !important;
+  height: 50px !important;
+  padding: 0.25rem 0.75rem !important;
+  font-size: 1.25rem !important;
+  line-height: 1 !important;
+  border-radius: 0.25rem !important;
+  margin-left: 0.5em;
+}
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+
+.active {
+  @extend .fw-bold;
+  &:after {
+    $line-transition-time: .5s;
+    content: '';
+    display: block;
+    margin: auto;
+    width: 100%;
+    background: white;
+  }
+}

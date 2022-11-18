@@ -1,0 +1,9 @@
+.gitsecret/keys/random_seed
+!*.secret
+api/production.env
+api/test.env
+.devcontainer/.env
+
+*.mypy_cache
+*.pytest_cache
+node_modules

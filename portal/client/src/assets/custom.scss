@@ -1,0 +1,34 @@
+$badger-orange: #f47920;
+$badger-orange-light: lighten($badger-orange, 30%);
+$badger-orange-accent: #e66000;
+$badger-orange-accent-light: #FAA634; 
+$badger-blue: #003057;
+$badger-gray: #939598;
+
+$primary: $badger-blue;
+$min-contrast-ratio: 2.7; //accessibility concerns? defaults to 4.5
+
+$navbar-dark-color:                 rgba($badger-orange, .75);;
+// $navbar-dark-color:                 rgba(white, .55);
+$navbar-dark-hover-color:           $badger-orange;
+$navbar-dark-active-color:          rgba($badger-orange, .75);
+$navbar-dark-disabled-color:        rgba($badger-orange, .25);
+$navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{rgba(white, .75)}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+$navbar-dark-toggler-border-color:  rgba($badger-orange, .1);
+$headings-font-family:              'MuseoSans', sans-serif;
+
+@import "./bootstrap-color-initialization.scss";
+$theme-colors: (
+  "primary":    $primary,
+  "bold":       $badger-orange,
+  "badger-gray":$badger-gray,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+) !default;
+
+@import "bootstrap/scss/bootstrap.scss";

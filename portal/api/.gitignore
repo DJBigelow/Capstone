@@ -1,0 +1,9 @@
+.virtualenvs/
+__pycache__
+.pytest_cache
+.mypy_cache/
+.env
+storage/
+*repl.py
+
+*.egg-info

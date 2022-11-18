@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+  portal:
+    container_name: portal
+    build: 
+      context: .
+    user: developer
+    privileged: true
+    volumes:
+      - developer_home:/home/developer
+      - ../:/app/:z
+      - $HOME/.ssh:/home/developer/.ssh:z
+      - ./.bashrc:/home/developer/.bashrc:z
+      - ./.bash-git-prompt:/home/developer/.bash-git-prompt:z
+    env_file:
+      - .env
+      
+    command: >
+      sh -c "
+        cd api
+        source /home/developer/.virtualenvs/portal/bin/activate
+        pip install -r requirements.txt
+        uvicorn src.main:app --host 0.0.0.0 --reload &
+        cd ..
+        cd client
+        npm i
+        npm start
+      "
+    ports:
+      - "8080:3000"
+      - "5000:8000"
+    networks:
+      shared:
+
+  portal_db:
+    image: postgres:latest
+    container_name: portal_db
+    environment:
+      - POSTGRES_DB=Portal
+      - POSTGRES_USER=PortalUser
+      - POSTGRES_PASSWORD=asdfawev32ywebw3w
+    volumes: 
+      - ../api/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    ports:
+      - 5432:5432
+    networks: 
+      shared:
+
+  portal_test_db:
+    image: postgres:latest
+    container_name: portal_test_db
+    environment:
+      - POSTGRES_DB=TestPortal
+      - POSTGRES_USER=TestPortalUser
+      - POSTGRES_PASSWORD=testpsswd1!
+    volumes: 
+      - ../api/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    ports:
+      - 5433:5432
+    networks: 
+      shared:
+
+volumes:
+  developer_home:
+
+networks:
+  shared:
