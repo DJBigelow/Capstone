@@ -18,7 +18,6 @@
 - As a user, I can filter by campus
 - As a user, I can see contact information for departments themselves
 - As a user, I want the directory to be fast
-- As a user, when I navigate to the directory page, my cursor is already in the filter field
 
 ### Admin User
 - As an admin, I can modify all information on the directory

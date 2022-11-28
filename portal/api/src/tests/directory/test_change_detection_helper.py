@@ -241,7 +241,6 @@ def test_historical_change_does_not_cover_pending_change():
 
 
 def test_can_group_employee_entries(banner_employees_list, portal_employees_list):
-    # Todo: Scramble lists (not randomly) to make sure things aren't just being zipped up in order
     actual_grouped_employees = group_banner_and_portal_employee_entries(
         banner_employees_list, portal_employees_list
     )
@@ -256,8 +255,3 @@ def test_can_group_employee_entries(banner_employees_list, portal_employees_list
         assert actual_grouped_employees[index] == expected_grouped_employees[index]
 
 
-# How do we handle new entries in banner? When we find an employee in the Banner db with no matching employee in the Portal db,
-# does that need to be approved? If so, should we have a special type of PendingChange for entire entries instead of column differences?
-# Also, come up with a better name for this test
-def test_group_employees_when_banner_employee_isnt_in_portal_db():
-    pass
